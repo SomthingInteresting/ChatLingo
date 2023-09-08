@@ -10,3 +10,4 @@ Realtime chat with automatic translation.
 - Try serverless?
 - Authentication for later
 - DeepL for translation - Documentation: https://www.deepl.com/docs-api - API Domain: api-free.deepl.com
+- Decide on websocket - socket.io?
