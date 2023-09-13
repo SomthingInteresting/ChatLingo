@@ -1,5 +1,6 @@
 // LoginComponent.js
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { signIn } from '../utils/authService';
 import '../styles/LoginStyles.css';
 
@@ -42,6 +43,7 @@ const LoginComponent = () => {
         />
       </div>
       <button onClick={handleLogin}>Login</button>
+      <p className="signup-link">Don't have an account? <Link to="/signup">Sign Up</Link></p>
     </div>
   );
 };
