@@ -36,12 +36,12 @@ export const signOut = async () => {
   }
 };
 
-export const observeAuthState = (onUserAuthenticated, onUserLoggedOut) => {
+export const observeAuth = (setUser) => {
   return onAuthStateChanged(auth, (user) => {
     if (user) {
-      onUserAuthenticated(user);
+      setUser(user); // Set the user object if authenticated
     } else {
-      onUserLoggedOut();
+      setUser(null); // Set to null if not authenticated
     }
   });
 };
