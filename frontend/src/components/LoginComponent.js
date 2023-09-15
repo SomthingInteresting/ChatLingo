@@ -48,10 +48,8 @@ const LoginComponent = () => {
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box sx={{ marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <img src="ChatLingoLogo.png" alt="Your Logo" style={{ width: '200px', marginBottom: '0px' }} />
           {error && <p style={{ color: 'red' }}>{error}</p>}
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
