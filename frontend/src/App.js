@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import LoginComponent from './components/LoginComponent';
+import SignUpComponent from './components/SignUpComponent';
+import HomeComponent from './components/HomeComponent';
+import { observeAuth } from './utils/authService';
+
 
 function App() {
+  const [user, setUser] = useState(null);
+  const isLoggedIn = Boolean(user);
+
+  useEffect(() => {
+    const unsubscribe = observeAuth(setUser); // Start observing the auth state
+
+    return () => {
+      unsubscribe(); // Stop observing the auth state when the component is unmounted
+    };
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<LoginComponent />} />
+        <Route path="/signup" element={<SignUpComponent />} />
+        <Route path="/home" element={isLoggedIn ? <HomeComponent /> : <Navigate to="/" />} />
+        {/* Add other routes as needed */}
+      </Routes>
+    </Router>
   );
 }
 
