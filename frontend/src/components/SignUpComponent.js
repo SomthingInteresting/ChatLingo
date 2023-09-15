@@ -15,9 +15,7 @@ const SignUpComponent = () => {
     }
     try {
       await signUp(email, password);
-      // Handle successful sign-up, e.g., redirect to login or another page
     } catch (err) {
-      // Handle error during sign-up
       setError(err.message);
     }
   };
