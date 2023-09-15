@@ -38,9 +38,7 @@ const SignUpComponent = () => {
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box sx={{ marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
+        <img src="ChatLingoLogo.png" alt="Your Logo" style={{ width: '200px', marginBottom: '0px' }} /> 
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
