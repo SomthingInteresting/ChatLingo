@@ -10,7 +10,9 @@ const allowedOrigins = [
   // "http://localhost:3000", // Local development
   "https://chat-lingo.onrender.com", // Your production frontend domain
   "https://chat-lingo.netlify.app/",
-  "https://chat-lingo.vercel.app/"
+  "https://chat-lingo.vercel.app/",
+  "https://chat-lingo-pgsoenolp-somthinginteresting.vercel.app",
+  "https://chat-lingo-git-main-somthinginteresting.vercel.app"
 ];
 
 const io = new Server(server, {
