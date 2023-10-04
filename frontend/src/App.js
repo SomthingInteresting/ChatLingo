@@ -4,6 +4,7 @@ import LoginComponent from './components/LoginComponent';
 import SignUpComponent from './components/SignUpComponent';
 import HomeComponent from './components/HomeComponent';
 import LogoutComponent from './components/LogoutComponent';
+import ChatComponent from './components/ChatComponent';
 import { observeAuth } from './utils/authService';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path="/" element={<LoginComponent />} />
         <Route path="/signup" element={<SignUpComponent />} />
         <Route path="/home" element={isLoggedIn ? <HomeComponent /> : <Navigate to="/" />} />
+        <Route path="/chat" element={<ChatComponent />} /> {/* Updated line */}
         <Route path="/logout" element={<LogoutComponent />} />
       </Routes>
     </Router>
