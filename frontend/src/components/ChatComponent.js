@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { io } from 'socket.io-client';
-// import { apiUrl } from '../config'; // Update the path if you place config.js elsewhere
+import { apiUrl } from '../config';
 
-const socket = io('https://chat-lingo-backend.onrender.com');
+// const socket = io('https://chat-lingo-backend.onrender.com');
+const socket = io(apiUrl);
 
 const Chat = () => {
   const [message, setMessage] = useState('');

@@ -7,8 +7,7 @@ const server = http.createServer(app);
 
 // Define allowed origins
 const allowedOrigins = [
-  "https://chat-lingo.onrender.com", // Your production frontend domain
-  "https://chat-lingo.netlify.app/",
+  "http://localhost:3000",
   "https://chat-lingo.vercel.app"
 ];
 
