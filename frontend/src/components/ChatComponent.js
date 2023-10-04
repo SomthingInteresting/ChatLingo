@@ -4,6 +4,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { signOut } from '../utils/authService';
 import { io } from 'socket.io-client';
 import { apiUrl } from '../config';
+import '../styles/ChatComponent.css';
 
 const socket = io(apiUrl);
 

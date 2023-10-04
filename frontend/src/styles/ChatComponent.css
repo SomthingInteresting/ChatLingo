@@ -1,0 +1,76 @@
+/* Chat.css */
+
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f8f8f8;
+  margin: 0;
+}
+
+div {
+  text-align: center;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: auto;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+select {
+  padding: 10px;
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+ul {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  list-style-type: none;
+  margin-bottom: 20px;
+}
+
+li {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 5px;
+}
+
+form {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+input {
+  width: 80%;
+  padding: 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+@media only screen and (max-width: 600px) {
+  input {
+    width: 70%;
+  }
+}
