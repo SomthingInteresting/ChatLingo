@@ -14,10 +14,15 @@ const Chat = () => {
   };
 
   useEffect(() => {
-    socket.on('chat message', (msg) => {
-      setChat([...chat, msg]);
-    });
-  }, [chat]);
+    const handleNewMessage = (msg) => {
+      setChat((prevChat) => [...prevChat, msg]);
+    };
+
+    socket.on('chat message', handleNewMessage);
+    
+    // Cleanup
+    return () => socket.off('chat message', handleNewMessage);
+  }, []);
 
   return (
     <div>

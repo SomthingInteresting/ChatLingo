@@ -13,6 +13,13 @@ const io = new Server(server, {
 
 io.on("connection", (socket) => {
   console.log("a user connected");
+
+  // Listen for a chat message and broadcast it to all connected clients
+  socket.on("chat message", (msg) => {
+    console.log("Message received:", msg);
+    io.emit("chat message", msg);
+  });
+
   socket.on("disconnect", () => {
     console.log("user disconnected");
   });
