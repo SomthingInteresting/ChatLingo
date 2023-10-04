@@ -1,21 +1,23 @@
-// App.js
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import LoginComponent from './components/LoginComponent';
 import SignUpComponent from './components/SignUpComponent';
 import HomeComponent from './components/HomeComponent';
+import LogoutComponent from './components/LogoutComponent';
 import { observeAuth } from './utils/authService';
 
-
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(() => {
+    const storedUser = localStorage.getItem('user');
+    return storedUser ? JSON.parse(storedUser) : null;
+  });
   const isLoggedIn = Boolean(user);
 
   useEffect(() => {
-    const unsubscribe = observeAuth(setUser); // Start observing the auth state
+    const unsubscribe = observeAuth(setUser);
 
     return () => {
-      unsubscribe(); // Stop observing the auth state when the component is unmounted
+      unsubscribe();
     };
   }, []);
 
@@ -25,7 +27,7 @@ function App() {
         <Route path="/" element={<LoginComponent />} />
         <Route path="/signup" element={<SignUpComponent />} />
         <Route path="/home" element={isLoggedIn ? <HomeComponent /> : <Navigate to="/" />} />
-        {/* Add other routes as needed */}
+        <Route path="/logout" element={<LogoutComponent />} />
       </Routes>
     </Router>
   );
