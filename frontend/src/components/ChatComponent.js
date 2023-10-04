@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { io } from 'socket.io-client';
+import { apiUrl } from '../config'; // Update the path if you place config.js elsewhere
 
-const socket = io(process.env.REACT_APP_API_URL);
+const socket = io(apiUrl);
 
 const Chat = () => {
   const [message, setMessage] = useState('');
