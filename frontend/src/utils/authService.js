@@ -45,11 +45,11 @@ export const observeAuth = (setUser) => {
     if (user) {
       setUser(user);
       localStorage.setItem('user', JSON.stringify(user));
-      console.log("User set:", JSON.stringify(user)); // Debug line
+      // console.log("User set:", JSON.stringify(user)); // Debug line
     } else {
       setUser(null);
       localStorage.removeItem('user');
-      console.log("User removed"); // Debug line
+      // console.log("User removed"); // Debug line
     }
   });
 };
