@@ -1,9 +1,12 @@
+require('dotenv').config();
 const express = require("express");
 const http = require("http");
 const { Server } = require("socket.io");
+const translateMessage = require('./translate'); // Import the translation function
 
 const app = express();
 const server = http.createServer(app);
+const userLanguages = {}; // Store users' language preferences
 
 // Define allowed origins
 const allowedOrigins = [
@@ -34,14 +37,24 @@ const io = new Server(server, {
 io.on("connection", (socket) => {
   console.log("a user connected");
 
-  // Listen for a chat message and broadcast it to all connected clients
-  socket.on("chat message", (msg) => {
+  // Update language preference
+  socket.on("set-language", (lang) => {
+    userLanguages[socket.id] = lang;
+  });
+
+  socket.on("chat message", async (msg) => {
     console.log("Message received:", msg);
-    io.emit("chat message", msg);
+
+    // Translate and send the message to each connected user in their chosen language
+    for (const [sockId, lang] of Object.entries(userLanguages)) {
+      const translatedText = await translateMessage(msg.text, lang, process.env.DeepL_API_Key);
+      io.to(sockId).emit("chat message", { ...msg, text: translatedText });
+    }
   });
 
   socket.on("disconnect", () => {
     console.log("user disconnected");
+    delete userLanguages[socket.id]; // Remove language preference for disconnected user
   });
 });
 

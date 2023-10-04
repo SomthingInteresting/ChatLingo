@@ -11,6 +11,7 @@ const Chat = () => {
   const [message, setMessage] = useState('');
   const [chat, setChat] = useState([]);
   const [username, setUsername] = useState('');
+  const [language, setLanguage] = useState('EN'); // Added
   const navigate = useNavigate();
   const auth = getAuth();
 
@@ -23,6 +24,10 @@ const Chat = () => {
       }
     });
   }, [auth]);
+
+  useEffect(() => {
+    socket.emit('set-language', language); // Added
+  }, [language]);
 
   const sendMessage = (e) => {
     e.preventDefault();
@@ -52,6 +57,12 @@ const Chat = () => {
   return (
     <div>
       <button onClick={handleLogout}>Logout</button>
+      <select value={language} onChange={(e) => setLanguage(e.target.value)}>
+        <option value="EN">English</option>
+        <option value="ES">Español</option>
+        <option value="FR">Français</option>
+        <option value="PL">Polish</option>
+      </select>
       <ul id="messages">
         {chat.map((msg, idx) => (
           <li key={idx}>{msg.username}: {msg.text}</li>
